@@ -16,9 +16,9 @@ namespace AcademyApp
 		{
 			InitializeComponent ();
 		}
-       public void OnSignUpButtonClicked(object sender, EventArgs ea)
+       public  void OnSignUpButtonClicked(object sender, EventArgs ea)
         {
-			Navigation.PushAsync(new NewUser());
+			NavigationPage nav = new NavigationPage(new NewUser());
 
 		}
         

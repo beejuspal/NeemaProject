@@ -41,8 +41,8 @@ namespace AcademyApp
         }
         public void Add_Clicked(object sender, EventArgs ea)
         {
-
-        }
+			NavigationPage nav = new NavigationPage(new NewUser());
+		}
     
     }
 }
