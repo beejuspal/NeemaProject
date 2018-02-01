@@ -7,6 +7,8 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
+    <PackageReference Include="XFCustomControls" Version="1.0.0" />
+    <PackageReference Include="XLabs.Forms" Version="2.0.5782" />
   </ItemGroup>
 
   <ItemGroup>

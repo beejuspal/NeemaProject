@@ -1,12 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="AcademyApp.NewUser">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" Padding="10,0,10,0">
+                <Label x:Name="note" HorizontalOptions="FillAndExpand" Text="User Registration" />
+                
+            </StackLayout>
+
+            <Entry Placeholder="Name" />
+            <Entry Placeholder="Email" />
+
+            <Label  HorizontalOptions="FillAndExpand" Text="Gender" />
+            <controls:CheckBox DefaultText="Male"
+                               HorizontalOptions="FillAndExpand"
+                               TextColor="Black"
+                               FontSize="18"
+                               FontName="AmericanTypewriter" 
+                               />
+            <controls:CheckBox DefaultText="Female"
+                               HorizontalOptions="FillAndExpand"
+                               TextColor="Black"
+                               FontSize="18"
+                               FontName="AmericanTypewriter" 
+                               />
+
+            <Button x:Name="btnSave" Text="Save" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

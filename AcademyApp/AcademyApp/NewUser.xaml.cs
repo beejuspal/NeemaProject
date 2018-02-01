@@ -12,9 +12,18 @@ namespace AcademyApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewUser : ContentPage
 	{
+		
 		public NewUser ()
 		{
 			InitializeComponent ();
+			
 		}
+	
+         
+        
+		
+		
+
+		
 	}
 }
