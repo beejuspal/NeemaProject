@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:XamarinFormsTestApp"
-             x:Class="XamarinFormsTestApp.MainPage" >
+             xmlns:local="clr-namespace:AcademyApp"
+             x:Class="AcademyApp.MainPage" >
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" Padding="10,0,10,0">
                 <Label x:Name="note" HorizontalOptions="FillAndExpand" Text="Students Info" />
-                <Button x:Name="add" Text="New Student" Clicked="add_Clicked" />
+                <Button x:Name="add" Text="New Student" Clicked="Add_Clicked" />
             </StackLayout>
             <ListView x:Name="ListView1" RowHeight="60">
                 <ListView.ItemTemplate>
@@ -25,8 +25,4 @@
             </ListView>
         </StackLayout>
     </ContentPage.Content>
-
-
-
-
 </ContentPage>

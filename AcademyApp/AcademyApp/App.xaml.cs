@@ -13,7 +13,7 @@ namespace AcademyApp
 		{
 			InitializeComponent();
 
-			MainPage = new AcademyApp.MainPage();
+			MainPage = new LoginPage();
 		}
 
 		protected override void OnStart ()
