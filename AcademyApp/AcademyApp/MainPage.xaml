@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinFormsTestApp"
+             x:Class="XamarinFormsTestApp.MainPage" >
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" Padding="10,0,10,0">
+                <Label x:Name="note" HorizontalOptions="FillAndExpand" Text="Students Info" />
+                <Button x:Name="add" Text="New Student" Clicked="add_Clicked" />
+            </StackLayout>
+            <ListView x:Name="ListView1" RowHeight="60">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="8,0,8,0">
+                                <!--<Label Text="Student Name:" TextColor="#000" FontSize="14"  />-->
+                                <Label Text="{Binding RoleName}" TextColor="#000" FontSize="14" LineBreakMode="TailTruncation" />
+                                <!--<Label Text="Student Address:" TextColor="#000" FontSize="14"  />-->
+                                <Label Text="{Binding IsActive}" TextColor="#000" LineBreakMode="TailTruncation" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+
+
+
+</ContentPage>
