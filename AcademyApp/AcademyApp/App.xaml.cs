@@ -9,12 +9,20 @@ namespace AcademyApp
 {
 	public partial class App : Application
 	{
-		public App ()
+        public static bool IsUserLoggedIn { get; set; }
+        public App ()
 		{
 			InitializeComponent();
 
-			MainPage = new LoginPage();
-		}
+            if (!IsUserLoggedIn)
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+        }
 
 		protected override void OnStart ()
 		{
