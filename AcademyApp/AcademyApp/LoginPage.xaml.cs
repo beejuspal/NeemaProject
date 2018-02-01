@@ -18,8 +18,9 @@ namespace AcademyApp
 		}
        public void OnSignUpButtonClicked(object sender, EventArgs ea)
         {
+			Navigation.PushAsync(new NewUser());
 
-        }
+		}
         
        public void OnLoginButtonClicked(object sender, EventArgs ea)
         {
