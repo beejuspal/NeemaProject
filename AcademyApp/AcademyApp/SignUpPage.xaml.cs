@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XLabs.Forms.Controls;
+
 
 namespace AcademyApp
 {
@@ -28,12 +28,12 @@ namespace AcademyApp
 
 			//BackgroundColor = Color.Black;
 
-			rdoGender.ItemsSource = new[]
-			{
-				"Male",
-				"Female"
+			//rdoGender.ItemsSource = new[]
+			//{
+			//	"Male",
+			//	"Female"
 
-			};
+			//};
 
 			//PickerCtl.ItemsSource = new[]
 			//{
@@ -41,21 +41,21 @@ namespace AcademyApp
 			//	"B"
 
 			//};
-			rdoGender.CheckedChanged += rdoGender_CheckedChanged;
+			//rdoGender.CheckedChanged += rdoGender_CheckedChanged;
 			GetUserRole();
 
 		}
-		private void rdoGender_CheckedChanged(object sender, int e)
-		{
-			var radio = sender as CustomRadioButton;
+		//private void rdoGender_CheckedChanged(object sender, int e)
+		//{
+		//	//var radio = sender as CustomRadioButton;
 
-			if (radio == null || radio.Id == -1)
-			{
-				return;
-			}
+		//	//if (radio == null || radio.Id == -1)
+		//	//{
+		//	//	return;
+		//	//}
 
-			DisplayAlert("Info", radio.Text, "OK");
-		}
+		//	//DisplayAlert("Info", radio.Text, "OK");
+		//}
 
 		private void pkrUserType_OnSelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -70,14 +70,14 @@ namespace AcademyApp
 		}
 		async void OnSignUpButtonClicked(object sender, EventArgs e)
 		{
-			var radio = sender as CustomRadioButton;
+			//var radio = sender as CustomRadioButton;
 			int roleId = int.Parse(pkrUserType.SelectedItem.ToString());
 			var user = new User()
 			{
 				Name = usernameEntry.Text,
 				Password = passwordEntry.Text,
 				Email = emailEntry.Text,
-				Gender = radio.Text,
+				//Gender = radio.Text,
 				RoleId = roleId,
 				IsActive = 1
 			};

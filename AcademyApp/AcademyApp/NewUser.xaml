@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-               xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="AcademyApp.NewUser">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
@@ -10,7 +9,7 @@
                 
             </StackLayout>
 
-            <Entry Placeholder="Name" />
+            <!--<Entry Placeholder="Name" />
             <Entry Placeholder="Email" />
 
             <Label  HorizontalOptions="FillAndExpand" Text="Gender" />
@@ -27,7 +26,7 @@
                                FontName="AmericanTypewriter" 
                                />
 
-            <Button x:Name="btnSave" Text="Save" />
+            <Button x:Name="btnSave" Text="Save" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

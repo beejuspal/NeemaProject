@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AcademyApp.SignUpPage"
-               xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+            
              Title="Sign Up">
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand">
@@ -13,13 +13,10 @@
             <Label Text="Email address" />
             <Entry x:Name="emailEntry" />
             <Label Text="Gender" />
-                <controls:BindableRadioGroup x:Name="rdoGender"
-                                     Grid.Row="1"
-                                     FontName="AmericanTypewriter"
-                                     SelectedIndex="{Binding ItemSelected}"
-                                     TextColor="Black"
-                                     HorizontalOptions="Start" />
-            <Label Text="User Type" />
+
+
+
+                <Label Text="User Type" />
             <!--<Controls:BindablePicker  x:Name="UserType" Grid.Row="0" Grid.Column="1">
             </Controls:BindablePicker>-->
             <!--<controls:BindablePicker x:Name="Usertype"  Grid.Row="0" BackgroundColor="Red"  Grid.Column="1"></controls:BindablePicker>-->
