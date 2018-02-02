@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AcademyApp.ModelClass.UserManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ namespace AcademyApp
         {
             var user = new User
             {
-                Username = usernameEntry.Text,
+                Email = usernameEntry.Text,
                 Password = passwordEntry.Text
             };
 
@@ -45,7 +46,7 @@ namespace AcademyApp
 
         bool AreCredentialsCorrect(User user)
         {
-            return user.Username == Constants.Username && user.Password == Constants.Password;
+            return user.Email == Constants.Username && user.Password == Constants.Password;
         }
     }
 }

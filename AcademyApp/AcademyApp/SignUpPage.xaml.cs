@@ -16,8 +16,12 @@ namespace AcademyApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SignUpPage : ContentPage
 	{
+		public static string strBaseAddress = "http://172.18.11.159:9091/";
+
+
 		public List<string> Alpha { get; set; }
 		HttpClient objClint = new HttpClient();
+
 		public SignUpPage()
 		{
 			InitializeComponent();
@@ -30,7 +34,7 @@ namespace AcademyApp
 				"Female"
 
 			};
-			
+
 			//PickerCtl.ItemsSource = new[]
 			//{
 			//	"A",
@@ -60,17 +64,22 @@ namespace AcademyApp
 
 			{
 				var selecteditem = pkrUserType.Items[pkrUserType.SelectedIndex];
-				
+
 				DisplayAlert("Picker Control", selecteditem, "OK");
 			}
 		}
 		async void OnSignUpButtonClicked(object sender, EventArgs e)
 		{
+			var radio = sender as CustomRadioButton;
+			int roleId = int.Parse(pkrUserType.SelectedItem.ToString());
 			var user = new User()
 			{
-				Username = usernameEntry.Text,
+				Name = usernameEntry.Text,
 				Password = passwordEntry.Text,
-				Email = emailEntry.Text
+				Email = emailEntry.Text,
+				Gender = radio.Text,
+				RoleId = roleId,
+				IsActive = 1
 			};
 
 			// Sign up logic goes here
@@ -78,12 +87,15 @@ namespace AcademyApp
 			var signUpSucceeded = AreDetailsValid(user);
 			if (signUpSucceeded)
 			{
+				InsertUser(signUpSucceeded, user);
+
 				var rootPage = Navigation.NavigationStack.FirstOrDefault();
 				if (rootPage != null)
 				{
 					App.IsUserLoggedIn = true;
 					Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
 					await Navigation.PopToRootAsync();
+					messageLabel.Text = "User Created";
 				}
 			}
 			else
@@ -94,18 +106,18 @@ namespace AcademyApp
 
 		bool AreDetailsValid(User user)
 		{
-			return (!string.IsNullOrWhiteSpace(user.Username) && !string.IsNullOrWhiteSpace(user.Password) && !string.IsNullOrWhiteSpace(user.Email) && user.Email.Contains("@"));
+			return (!string.IsNullOrWhiteSpace(user.Email) && !string.IsNullOrWhiteSpace(user.Password) && !string.IsNullOrWhiteSpace(user.Email) && user.Email.Contains("@"));
 		}
 		public async void GetUserRole()
 		{
 			UserRole objUserRole = new UserRole();
-			 
+
 
 			string json = "";
 			json = Newtonsoft.Json.JsonConvert.SerializeObject(objUserRole);
-			
-			objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
-			
+
+			objClint.BaseAddress = new Uri(strBaseAddress);
+
 			System.Net.Http.HttpResponseMessage respon = await objClint.GetAsync("api/UserManager/OtherUserRole/");
 			if (respon.IsSuccessStatusCode)
 			{
@@ -117,6 +129,30 @@ namespace AcademyApp
 
 
 
+			}
+		}
+		public async void InsertUser(bool isOk, User user)
+		{
+
+
+
+			string json = "";
+			json = JsonConvert.SerializeObject(user);
+
+			objClint.BaseAddress = new Uri(strBaseAddress);
+
+			HttpResponseMessage respon = await objClint.PostAsync("api/UserManager/AddUser", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+			if (respon.IsSuccessStatusCode)
+			{
+
+
+				messageLabel.Text = "User Created";
+
+
+			}
+			else
+			{
+				messageLabel.Text = "User Creatation Failed";
 			}
 		}
 
