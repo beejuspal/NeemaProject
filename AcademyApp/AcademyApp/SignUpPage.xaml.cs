@@ -131,14 +131,7 @@ namespace AcademyApp
 		}
 		public async void GetUserRole()
         {
-            //UserRole objUserRole = new UserRole();
-            //objUserRole.Id = 0;
-
-            //objUserRole.RoleName = "erer";
-            //objUserRole.IsActive = 1;
-
-            //string json = "";
-            //json = Newtonsoft.Json.JsonConvert.SerializeObject(objUserRole);
+          
           
             HttpClient objClint = new HttpClient();
             objClint.BaseAddress = new Uri(strBaseAddress);
