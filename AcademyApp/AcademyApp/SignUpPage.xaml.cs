@@ -16,92 +16,113 @@ namespace AcademyApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SignUpPage : ContentPage
 	{
-		public static string strBaseAddress = "http://172.18.11.159:9091/";
+      
+		//public static string strBaseAddress = "http://172.18.11.159:9091/";
+        public static string strBaseAddress = "http://192.168.100.6:9091/";
 
 
-		public List<string> Alpha { get; set; }
-		HttpClient objClint = new HttpClient();
+        public List<string> Alpha { get; set; }
+		
 
 		public SignUpPage()
 		{
 			InitializeComponent();
-
-			//BackgroundColor = Color.Black;
-
-			//rdoGender.ItemsSource = new[]
-			//{
-			//	"Male",
-			//	"Female"
-
-			//};
-
-			//PickerCtl.ItemsSource = new[]
-			//{
-			//	"A",
-			//	"B"
-
-			//};
-			//rdoGender.CheckedChanged += rdoGender_CheckedChanged;
-			GetUserRole();
+            fxLoadGender();
+            
+            GetUserRole();
 
 		}
-		//private void rdoGender_CheckedChanged(object sender, int e)
-		//{
-		//	//var radio = sender as CustomRadioButton;
+        private void fxLoadGender()
+        {
+            pkrGender.ItemsSource = new[]
+            {
+                "Male",
+                "Female"
 
-		//	//if (radio == null || radio.Id == -1)
-		//	//{
-		//	//	return;
-		//	//}
+            };
+        }
+        //private void rdoGender_CheckedChanged(object sender, int e)
+        //{
+        //	//var radio = sender as CustomRadioButton;
 
-		//	//DisplayAlert("Info", radio.Text, "OK");
-		//}
+        //	//if (radio == null || radio.Id == -1)
+        //	//{
+        //	//	return;
+        //	//}
 
-		private void pkrUserType_OnSelectedIndexChanged(object sender, EventArgs e)
+        //	//DisplayAlert("Info", radio.Text, "OK");
+        //}
+
+        private void pkrUserType_OnSelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (pkrUserType != null && pkrUserType.SelectedIndex <= pkrUserType.Items.Count)
+            //if (pkrUserType != null && pkrUserType.SelectedIndex <= pkrUserType.Items.Count)
 
 
-			{
-				var selecteditem = pkrUserType.Items[pkrUserType.SelectedIndex];
-
-				DisplayAlert("Picker Control", selecteditem, "OK");
-			}
-		}
+            //{
+            //    var selecteditem = pkrUserType.Items[pkrUserType.SelectedIndex];
+            //    int SelectedCode;
+            //    var aa = pkrUserType.SelectedItem as UserRole; //Here CountryModels is user define data.
+            //    SelectedCode = aa.Id;
+            //    DisplayAlert("Picker Control", SelectedCode.ToString(), "OK");
+            //}
+        }
 		async void OnSignUpButtonClicked(object sender, EventArgs e)
 		{
-			//var radio = sender as CustomRadioButton;
-			int roleId = int.Parse(pkrUserType.SelectedItem.ToString());
-			var user = new User()
-			{
-				Name = usernameEntry.Text,
-				Password = passwordEntry.Text,
-				Email = emailEntry.Text,
-				//Gender = radio.Text,
-				RoleId = roleId,
-				IsActive = 1
-			};
+            //var radio = sender as CustomRadioButton;
 
-			// Sign up logic goes here
+            int _roleId;
+            var aa = pkrUserType.SelectedItem as UserRole; //Here CountryModels is user define data.
+            _roleId = aa.Id;
+            //roleId = int.Parse(pkrUserType.SelectedItem.ToString());
 
-			var signUpSucceeded = AreDetailsValid(user);
-			if (signUpSucceeded)
-			{
-				InsertUser(signUpSucceeded, user);
+            User objuser = new User();
 
-				var rootPage = Navigation.NavigationStack.FirstOrDefault();
-				if (rootPage != null)
-				{
-					App.IsUserLoggedIn = true;
-					Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
-					await Navigation.PopToRootAsync();
-					messageLabel.Text = "User Created";
-				}
-			}
-			else
-			{
-				messageLabel.Text = "Sign up failed";
-			}
+
+            objuser.Name = usernameEntry.Text;
+            objuser.Password = passwordEntry.Text;
+            objuser.Email = emailEntry.Text;
+            objuser.Gender = pkrGender.Items[pkrGender.SelectedIndex];
+            objuser.RoleId = _roleId;
+            objuser.IsActive = 1;
+            string json = "";
+            json = JsonConvert.SerializeObject(objuser);
+            HttpClient objClint = new HttpClient();
+            objClint.BaseAddress = new Uri(strBaseAddress);
+
+            HttpResponseMessage respon = await objClint.PostAsync("api/UserManager/AddUser", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+            if (respon.IsSuccessStatusCode)
+            {
+
+
+                messageLabel.Text = "User Created";
+
+
+            }
+            else
+            {
+                messageLabel.Text = "User Creatation Failed";
+            }
+
+            // Sign up logic goes here
+
+            //var signUpSucceeded = AreDetailsValid(user);
+            //if (signUpSucceeded)
+            //{
+            //InsertUser( user);
+
+				//var rootPage = Navigation.NavigationStack.FirstOrDefault();
+				//if (rootPage != null)
+				//{
+				//	App.IsUserLoggedIn = true;
+				//	Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
+				//	await Navigation.PopToRootAsync();
+				//	messageLabel.Text = "User Created";
+				//}
+			//}
+			//else
+			//{
+			//	messageLabel.Text = "Sign up failed";
+			//}
 		}
 
 		bool AreDetailsValid(User user)
@@ -109,14 +130,18 @@ namespace AcademyApp
 			return (!string.IsNullOrWhiteSpace(user.Email) && !string.IsNullOrWhiteSpace(user.Password) && !string.IsNullOrWhiteSpace(user.Email) && user.Email.Contains("@"));
 		}
 		public async void GetUserRole()
-		{
-			UserRole objUserRole = new UserRole();
+        {
+            //UserRole objUserRole = new UserRole();
+            //objUserRole.Id = 0;
 
+            //objUserRole.RoleName = "erer";
+            //objUserRole.IsActive = 1;
 
-			string json = "";
-			json = Newtonsoft.Json.JsonConvert.SerializeObject(objUserRole);
-
-			objClint.BaseAddress = new Uri(strBaseAddress);
+            //string json = "";
+            //json = Newtonsoft.Json.JsonConvert.SerializeObject(objUserRole);
+          
+            HttpClient objClint = new HttpClient();
+            objClint.BaseAddress = new Uri(strBaseAddress);
 
 			System.Net.Http.HttpResponseMessage respon = await objClint.GetAsync("api/UserManager/OtherUserRole/");
 			if (respon.IsSuccessStatusCode)
@@ -131,15 +156,15 @@ namespace AcademyApp
 
 			}
 		}
-		public async void InsertUser(bool isOk, User user)
+		public async void InsertUser( User user)
 		{
 
 
 
 			string json = "";
 			json = JsonConvert.SerializeObject(user);
-
-			objClint.BaseAddress = new Uri(strBaseAddress);
+            HttpClient objClint = new HttpClient();
+            objClint.BaseAddress = new Uri(strBaseAddress);
 
 			HttpResponseMessage respon = await objClint.PostAsync("api/UserManager/AddUser", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
 			if (respon.IsSuccessStatusCode)

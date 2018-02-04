@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace AcademyApp.ModelClass.UserManager
 {
-   public class User
+    [Preserve(AllMembers = true)]
+    public class User
     {
         public int UserId { get; set; }
 

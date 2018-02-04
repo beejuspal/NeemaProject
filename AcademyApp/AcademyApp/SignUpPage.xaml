@@ -13,10 +13,10 @@
             <Label Text="Email address" />
             <Entry x:Name="emailEntry" />
             <Label Text="Gender" />
+            <Picker Title="(Select Gender)"  x:Name="pkrGender"  />
 
 
-
-                <Label Text="User Type" />
+            <Label Text="User Type" />
             <!--<Controls:BindablePicker  x:Name="UserType" Grid.Row="0" Grid.Column="1">
             </Controls:BindablePicker>-->
             <!--<controls:BindablePicker x:Name="Usertype"  Grid.Row="0" BackgroundColor="Red"  Grid.Column="1"></controls:BindablePicker>-->
@@ -24,7 +24,7 @@
             SelectedIndexChanged="Picker_OnSelectedIndexChanged">
                
             </Picker>-->
-            <Picker Title="User Type(Select UserType)"  x:Name="pkrUserType"  SelectedIndexChanged="pkrUserType_OnSelectedIndexChanged" ItemDisplayBinding="{Binding RoleName}" SelectedIndex="{Binding Id}" SelectedItem="{Binding Id}"/>
+            <Picker Title="User Type(Select UserType)"  x:Name="pkrUserType"  SelectedIndexChanged="pkrUserType_OnSelectedIndexChanged" ItemDisplayBinding="{Binding RoleName}"  SelectedItem="{Binding Id}"/>
             <Button Text="Sign Up" Clicked="OnSignUpButtonClicked" />
             <Label x:Name="messageLabel" />
         </StackLayout>
