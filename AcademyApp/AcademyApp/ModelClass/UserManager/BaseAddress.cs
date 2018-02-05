@@ -7,10 +7,11 @@ namespace AcademyApp.ModelClass.UserManager
    public class BaseAddress
     {
         //public static string strBaseAddress = "http://172.18.11.159:9091/";
+        //public static string strBaseAddress = "http://172.18.11.159:9091/";
+        //public static string strBaseAddress = "http://192.168.100.6:9091/";
 
-        
 
-        public string strBaseAddress
+        public static string strBaseAddress
         {
             get
             {
@@ -18,7 +19,7 @@ namespace AcademyApp.ModelClass.UserManager
             }
             set
             {
-                strBaseAddress = "http://172.18.11.159:9091/";
+                strBaseAddress = "http://192.168.100.6:9091/";
             }
         }
     }

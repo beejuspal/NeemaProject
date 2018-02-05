@@ -17,8 +17,7 @@ namespace AcademyApp
 	public partial class SignUpPage : ContentPage
 	{
       
-		public static string strBaseAddress = "http://172.18.11.159:9091/";
-        //public static string strBaseAddress = "http://192.168.100.6:9091/";
+		
 
 
         public List<string> Alpha { get; set; }
@@ -87,15 +86,16 @@ namespace AcademyApp
             string json = "";
             json = JsonConvert.SerializeObject(objuser);
             HttpClient objClint = new HttpClient();
-            objClint.BaseAddress = new Uri(strBaseAddress);
+            objClint.BaseAddress = new Uri(BaseAddress.strBaseAddress);
 
             HttpResponseMessage respon = await objClint.PostAsync("api/UserManager/AddUser", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+            string msg = "";
             if (respon.IsSuccessStatusCode)
             {
 
 
-                messageLabel.Text = "User Created";
-
+                msg = "User Created Successfully";
+              
 
             }
             else
@@ -164,7 +164,7 @@ namespace AcademyApp
 			{
 
 
-				messageLabel.Text = "User Created";
+				messageLabel.Text = "User  Created";
 
 
 			}
