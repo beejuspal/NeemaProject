@@ -17,8 +17,8 @@ namespace AcademyApp
 	public partial class SignUpPage : ContentPage
 	{
       
-		//public static string strBaseAddress = "http://172.18.11.159:9091/";
-        public static string strBaseAddress = "http://192.168.100.6:9091/";
+		public static string strBaseAddress = "http://172.18.11.159:9091/";
+        //public static string strBaseAddress = "http://192.168.100.6:9091/";
 
 
         public List<string> Alpha { get; set; }
