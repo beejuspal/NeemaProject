@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcademyApp.UserDetails">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="lvUsers" RowHeight="60">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="8,0,8,0">
+                                <!--<Label Text="Student Name:" TextColor="#000" FontSize="14"  />-->
+                                <Label Text="{Binding Name}" TextColor="#000" FontSize="14" LineBreakMode="TailTruncation" />
+                                <!--<Label Text="Student Address:" TextColor="#000" FontSize="14"  />-->
+                                <Label Text="{Binding Emale}" TextColor="#000" LineBreakMode="TailTruncation" />
+                                <Label Text="{Binding Gender}" TextColor="#000" LineBreakMode="TailTruncation" />
+                                <Label Text="{Binding RoleName}" TextColor="#000" LineBreakMode="TailTruncation" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
