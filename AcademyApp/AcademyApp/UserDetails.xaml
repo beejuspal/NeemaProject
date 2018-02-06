@@ -8,18 +8,23 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Vertical" Padding="8,0,8,0">
-                                <!--<Label Text="Student Name:" TextColor="#000" FontSize="14"  />-->
+                            <StackLayout Orientation="Horizontal" Padding="8,0,8,0">
+                                <Label Text="Name:" TextColor="#000" FontSize="14"  />
                                 <Label Text="{Binding Name}" TextColor="#000" FontSize="14" LineBreakMode="TailTruncation" />
-                                <!--<Label Text="Student Address:" TextColor="#000" FontSize="14"  />-->
-                                <Label Text="{Binding Emale}" TextColor="#000" LineBreakMode="TailTruncation" />
+                                <Label Text="Email:" TextColor="#000" FontSize="14"  />
+                                <Label Text="{Binding Email}" TextColor="#000" LineBreakMode="TailTruncation" />
+                                <Label Text="Gender:" TextColor="#000" FontSize="14"  />
                                 <Label Text="{Binding Gender}" TextColor="#000" LineBreakMode="TailTruncation" />
+                                <Label Text="Role:" TextColor="#000" FontSize="14"  />
                                 <Label Text="{Binding RoleName}" TextColor="#000" LineBreakMode="TailTruncation" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+      
+            <Button Text="Sign Up" Clicked="OnSignUpButtonClicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

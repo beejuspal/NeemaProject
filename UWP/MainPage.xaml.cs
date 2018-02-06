@@ -15,27 +15,20 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace AcademyApp.Uwp
+namespace UWP
 {
-	/// <summary>
-	/// An empty page that can be used on its own or navigated to within a Frame.
-	/// </summary>
-	public sealed partial class MainPage : Page
-	{
-		public MainPage()
-		{
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class MainPage 
+    {
+        public MainPage()
+        {
+            this.InitializeComponent();
+			// below this existing line
 			this.InitializeComponent();
-			//Frame.Navigate(typeof(AcademyApp.LoginPage));
+			// add this line
+			LoadApplication(new AcademyApp.App());
 		}
-
-		private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void btnAdd_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-	}
+    }
 }

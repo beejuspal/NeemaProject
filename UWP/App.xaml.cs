@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace AcademyApp.Uwp
+namespace UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -30,10 +30,7 @@ namespace AcademyApp.Uwp
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-			
-
-			
-		}
+        }
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

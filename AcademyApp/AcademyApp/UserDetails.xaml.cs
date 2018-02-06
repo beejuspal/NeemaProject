@@ -25,17 +25,21 @@ namespace AcademyApp
         {
             HttpClient objClint = new HttpClient();
            
-            objClint.BaseAddress = new Uri(BaseAddress.strBaseAddress);
+            objClint.BaseAddress = new Uri("http://172.18.11.159:9093/");
           
             HttpResponseMessage respon = await objClint.GetAsync("api/Usermanager/AllUser/");
             if (respon.IsSuccessStatusCode)
             {
                 var result = await respon.Content.ReadAsStringAsync();
-                var Items1 = JsonConvert.DeserializeObject<List<User>>(result);
+                var Items1 = JsonConvert.DeserializeObject<List<UserDetail>>(result);
                 lvUsers.ItemsSource = Items1;
 
 
             }
-        }
-    }
+		}
+		async void OnSignUpButtonClicked(object sender, EventArgs e)
+		{
+			await Navigation.PushAsync(new SignUpPage());
+		}
+	}
 }

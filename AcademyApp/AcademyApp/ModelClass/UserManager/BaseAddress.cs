@@ -19,7 +19,7 @@ namespace AcademyApp.ModelClass.UserManager
             }
             set
             {
-                strBaseAddress = "http://192.168.100.6:9091/";
+                strBaseAddress = "http://172.18.11.159:9093/";
             }
         }
     }

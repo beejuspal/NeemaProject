@@ -86,7 +86,7 @@ namespace AcademyApp
             string json = "";
             json = JsonConvert.SerializeObject(objuser);
             HttpClient objClint = new HttpClient();
-            objClint.BaseAddress = new Uri(BaseAddress.strBaseAddress);
+            objClint.BaseAddress = new Uri("http://172.18.11.159:9093/");
 
             HttpResponseMessage respon = await objClint.PostAsync("api/UserManager/AddUser", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
             string msg = "";
@@ -94,7 +94,7 @@ namespace AcademyApp
             {
 
 
-                msg = "User Created Successfully";
+				messageLabel.Text  = "User Created Successfully";
               
 
             }
@@ -134,7 +134,7 @@ namespace AcademyApp
           
           
             HttpClient objClint = new HttpClient();
-            objClint.BaseAddress = new Uri(strBaseAddress);
+            objClint.BaseAddress = new Uri("http://172.18.11.159:9093/");
 
 			System.Net.Http.HttpResponseMessage respon = await objClint.GetAsync("api/UserManager/OtherUserRole/");
 			if (respon.IsSuccessStatusCode)
@@ -157,7 +157,7 @@ namespace AcademyApp
 			string json = "";
 			json = JsonConvert.SerializeObject(user);
             HttpClient objClint = new HttpClient();
-            objClint.BaseAddress = new Uri(strBaseAddress);
+            objClint.BaseAddress = new Uri(BaseAddress.strBaseAddress);
 
 			HttpResponseMessage respon = await objClint.PostAsync("api/UserManager/AddUser", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
 			if (respon.IsSuccessStatusCode)
