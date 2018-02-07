@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AcademyApp.SignUpPage"
-            
+              xmlns:local="clr-namespace:AcademyApp.Validations"
              Title="Sign Up">
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand">
@@ -13,7 +13,12 @@
             <Label Text="Username" />
             <Entry x:Name="usernameEntry"  />
             <Label Text="Password" />
-            <Entry x:Name="passwordEntry" IsPassword="true" />
+            <Entry x:Name="passwordEntry" IsPassword="true">
+
+                <Entry.Behaviors>
+                    <local:PasswordValidation />
+                </Entry.Behaviors>
+            </Entry>
             <Label Text="Email address" />
             <Entry x:Name="emailEntry" />
             <Label Text="Gender" />
