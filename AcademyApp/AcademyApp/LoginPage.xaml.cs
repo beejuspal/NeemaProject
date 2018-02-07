@@ -1,7 +1,9 @@
 ﻿using AcademyApp.ModelClass.UserManager;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,21 +28,24 @@ namespace AcademyApp
         {
             var user = new User
             {
-                Email = usernameEntry.Text,
+                Username = usernameEntry.Text,
                 Password = passwordEntry.Text
             };
-
-            var isValid = AreCredentialsCorrect(user);
-            if (isValid)
+            string json = "";
+            json = JsonConvert.SerializeObject(user);
+            HttpClient objClint = new HttpClient();
+            objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
+            HttpResponseMessage respon = await objClint.PostAsync("api/Users/authenticate", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+            if (respon.IsSuccessStatusCode)
             {
+                await DisplayAlert("Alert", "User Log In Successfully", "ok");
                 App.IsUserLoggedIn = true;
                 Navigation.InsertPageBefore(new MainPage(), this);
                 await Navigation.PopAsync();
             }
             else
             {
-                messageLabel.Text = "Login failed";
-                passwordEntry.Text = string.Empty;
+                messageLabel.Text = "User Login Failed";
             }
         }
 

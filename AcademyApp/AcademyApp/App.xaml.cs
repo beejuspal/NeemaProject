@@ -13,18 +13,18 @@ namespace AcademyApp
         public App ()
 		{
 			InitializeComponent();
-			MainPage = new NavigationPage(new UserDetails());
-			//if (!IsUserLoggedIn)
-			//{
-			//	MainPage = new NavigationPage(new LoginPage());
-			//}
-			//else
-			//{
-			//	MainPage = new NavigationPage(new MainPage());
-			//}
-		}
+			//MainPage = new NavigationPage(new UserDetails());
+            if (!IsUserLoggedIn)
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+        }
 
-		protected override void OnStart ()
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
