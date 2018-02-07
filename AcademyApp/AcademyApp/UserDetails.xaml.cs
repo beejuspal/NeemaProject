@@ -24,8 +24,8 @@ namespace AcademyApp
         public async void GetAllUsers()
         {
             HttpClient objClint = new HttpClient();
-           
-            objClint.BaseAddress = new Uri("http://172.18.11.159:9093/");
+          
+            objClint.BaseAddress = new Uri(BaseAddress.strBaseAddress);
           
             HttpResponseMessage respon = await objClint.GetAsync("api/Usermanager/AllUser/");
             if (respon.IsSuccessStatusCode)

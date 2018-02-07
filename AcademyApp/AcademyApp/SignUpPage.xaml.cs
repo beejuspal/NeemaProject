@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -33,12 +34,12 @@ namespace AcademyApp
 		}
         private void fxLoadGender()
         {
-            pkrGender.ItemsSource = new[]
-            {
-                "Male",
-                "Female"
+            //pkrGender.ItemsSource = new[]
+            //{
+            //    "Male",
+            //    "Female"
 
-            };
+            //};
         }
         //private void rdoGender_CheckedChanged(object sender, int e)
         //{
@@ -76,25 +77,29 @@ namespace AcademyApp
 
             User objuser = new User();
 
-
-            objuser.Name = usernameEntry.Text;
+			objuser.FirstName = frstnameEntry.Text;
+			objuser.LastName = lastnameEntry.Text;
+            objuser.Username = usernameEntry.Text;
             objuser.Password = passwordEntry.Text;
             objuser.Email = emailEntry.Text;
-            objuser.Gender = pkrGender.Items[pkrGender.SelectedIndex];
+            //objuser.Gender = pkrGender.Items[pkrGender.SelectedIndex];
             objuser.RoleId = _roleId;
             objuser.IsActive = 1;
             string json = "";
             json = JsonConvert.SerializeObject(objuser);
             HttpClient objClint = new HttpClient();
-            objClint.BaseAddress = new Uri("http://172.18.11.159:9093/");
+            objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
 
-            HttpResponseMessage respon = await objClint.PostAsync("api/UserManager/AddUser", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
-            string msg = "";
+            //HttpResponseMessage respon = await objClint.PostAsync("api/UserManager/AddUser", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+			HttpResponseMessage respon = await objClint.PostAsync("api/Users/Register", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+			string msg = "";
             if (respon.IsSuccessStatusCode)
             {
+				
+				await DisplayAlert("Alert", "User Registered Successfully", "ok");
 
-
-				messageLabel.Text  = "User Created Successfully";
+				await Navigation.PushAsync(new LoginPage());
+				//messageLabel.Text  = "User Created Successfully";
               
 
             }
@@ -134,7 +139,7 @@ namespace AcademyApp
           
           
             HttpClient objClint = new HttpClient();
-            objClint.BaseAddress = new Uri("http://172.18.11.159:9093/");
+            objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
 
 			System.Net.Http.HttpResponseMessage respon = await objClint.GetAsync("api/UserManager/OtherUserRole/");
 			if (respon.IsSuccessStatusCode)
