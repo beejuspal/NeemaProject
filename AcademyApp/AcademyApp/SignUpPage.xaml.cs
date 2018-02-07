@@ -89,9 +89,9 @@ namespace AcademyApp
             json = JsonConvert.SerializeObject(objuser);
             HttpClient objClint = new HttpClient();
             objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
-
+           
             //HttpResponseMessage respon = await objClint.PostAsync("api/UserManager/AddUser", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
-			HttpResponseMessage respon = await objClint.PostAsync("api/Users/Register", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+            HttpResponseMessage respon = await objClint.PostAsync("api/Users/Register", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
 			string msg = "";
             if (respon.IsSuccessStatusCode)
             {

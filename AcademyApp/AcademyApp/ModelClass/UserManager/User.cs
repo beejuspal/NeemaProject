@@ -16,6 +16,7 @@ namespace AcademyApp.ModelClass.UserManager
         public string Email { get; set; }
         public string Gender { get; set; }
         public string Password { get; set; }
+        public string token { get; set; }
         public int RoleId { get; set; }
         public int IsActive { get; set; }
 		public string Username { get; set; }

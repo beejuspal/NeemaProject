@@ -35,12 +35,18 @@ namespace AcademyApp
             json = JsonConvert.SerializeObject(user);
             HttpClient objClint = new HttpClient();
             objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
-            HttpResponseMessage respon = await objClint.PostAsync("api/Users/authenticate", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+            var respon = await objClint.PostAsync("api/Users/authenticate", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+         
             if (respon.IsSuccessStatusCode)
             {
+                var result = respon.Content.ReadAsStringAsync().Result;
+                var name = JsonConvert.DeserializeObject<ReponseTokenMode>(result);
+                Application.Current.Properties["token"] = name.Token;
+               await Application.Current.SavePropertiesAsync();
                 await DisplayAlert("Alert", "User Log In Successfully", "ok");
+               
                 App.IsUserLoggedIn = true;
-                Navigation.InsertPageBefore(new MainPage(), this);
+                Navigation.InsertPageBefore(new UserDetails(), this);
                 await Navigation.PopAsync();
             }
             else

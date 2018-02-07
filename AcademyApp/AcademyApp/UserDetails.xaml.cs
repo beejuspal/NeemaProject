@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,9 +26,10 @@ namespace AcademyApp
         {
             HttpClient objClint = new HttpClient();
           
-            objClint.BaseAddress = new Uri(BaseAddress.strBaseAddress);
-          
-            HttpResponseMessage respon = await objClint.GetAsync("api/Usermanager/AllUser/");
+            objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
+            string get_token = jwt();
+            objClint.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", get_token);
+            HttpResponseMessage respon = await objClint.GetAsync("api/Users");
             if (respon.IsSuccessStatusCode)
             {
                 var result = await respon.Content.ReadAsStringAsync();
@@ -41,5 +43,12 @@ namespace AcademyApp
 		{
 			await Navigation.PushAsync(new SignUpPage());
 		}
-	}
+        private string jwt()
+        {
+            // create authorization header with jwt token
+            string token = (Application.Current.Properties["token"].ToString());
+            return token;
+        }
+    }
+
 }
