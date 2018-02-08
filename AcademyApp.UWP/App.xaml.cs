@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace UWP
+namespace AcademyApp.UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -49,8 +49,8 @@ namespace UWP
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
-				Xamarin.Forms.Forms.Init(e);
-				if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                Xamarin.Forms.Forms.Init(e);
+                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
                 }
