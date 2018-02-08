@@ -13,28 +13,40 @@ using Android.Views;
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-[assembly: ExportRenderer(typeof(CheckBoxRenderer), typeof(CheckboxRendererAndroid))]
+[assembly: ExportRenderer(typeof(CustomCheckBox), typeof(CheckboxRendererAndroid))]
 namespace AcademyApp.Droid
 {
-	public class CheckboxRendererAndroid : ButtonRenderer
+	public class CheckboxRendererAndroid:ViewRenderer
 	{
 		public CheckboxRendererAndroid(Context context) : base(context)
 		{
 
 		}
-		protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Button> e)
+		protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.View> e)
 		{
 			base.OnElementChanged(e);
-			
-
 			if (e.OldElement == null)
 			{
-				var control = new Android.Widget.CheckBox(this.Context);
-				this.SetNativeControl(control);
+			var control = new Android.Widget.CheckBox(this.Context);
+			this.SetNativeControl(control);
 
 
 
-			}
+				}
 		}
+		//protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Button> e)
+		//{
+		//	base.OnElementChanged(e);
+
+
+		//	if (e.OldElement == null)
+		//	{
+		//		var control = new Android.Widget.CheckBox(this.Context);
+		//		this.SetNativeControl(control);
+
+
+
+		//	}
+		//}
 	}
 }

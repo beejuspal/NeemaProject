@@ -13,9 +13,10 @@
             <Button Text="Login" Clicked="OnLoginButtonClicked" />
             <Label x:Name="messageLabel" />
             <Button Text="Sign Up"  Clicked="OnSignUpButtonClicked" />
-           
-            <local:CheckBoxRenderer></local:CheckBoxRenderer>
-            <Label Text="Forget Password" />
+            <Label Text="Remember me" />
+            <local:CustomCheckBox x:Name="chkbox" ></local:CustomCheckBox>
+
+            <local:HyperlinkLabel x:Name="HyperLinkedFP" Uri="SignUpPage.xaml" Text="Forget Password"  HorizontalOptions="Center"      VerticalOptions="End"></local:HyperlinkLabel>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
