@@ -25,7 +25,7 @@
             </ListView>
             <local:RoundedEntry></local:RoundedEntry>
       
-            <Button Text="Sign Up" Clicked="OnSignUpButtonClicked" />
+            <!--<Button Text="Sign Up" Clicked="OnSignUpButtonClicked" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -29,7 +29,7 @@ namespace AcademyApp
             objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
             string get_token = jwt();
             objClint.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", get_token);
-            HttpResponseMessage respon = await objClint.GetAsync("api/Users");
+            HttpResponseMessage respon = await objClint.GetAsync("api/Users/allusers");
             if (respon.IsSuccessStatusCode)
             {
                 var result = await respon.Content.ReadAsStringAsync();

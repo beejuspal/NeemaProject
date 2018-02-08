@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AcademyApp.LoginPage"
+                xmlns:local="clr-namespace:AcademyApp.CustomControls"
              Title="Login">
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand">
@@ -12,6 +13,9 @@
             <Button Text="Login" Clicked="OnLoginButtonClicked" />
             <Label x:Name="messageLabel" />
             <Button Text="Sign Up"  Clicked="OnSignUpButtonClicked" />
+           
+            <local:CheckBoxRenderer></local:CheckBoxRenderer>
+            <Label Text="Forget Password" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
