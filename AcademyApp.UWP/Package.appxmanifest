@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="5300f793-ff16-4021-bb83-db95d94bcb46"
+    Name="8e12df35-fded-48d6-b1a4-38852c45b5cb"
     Publisher="CN=Brainnovation"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="5300f793-ff16-4021-bb83-db95d94bcb46" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="8e12df35-fded-48d6-b1a4-38852c45b5cb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>AcademyApp.Uwp</DisplayName>
+    <DisplayName>AcademyApp.UWP</DisplayName>
     <PublisherDisplayName>Brainnovation</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="AcademyApp.Uwp.App">
+      EntryPoint="AcademyApp.UWP.App">
       <uap:VisualElements
-        DisplayName="AcademyApp.Uwp"
+        DisplayName="AcademyApp.UWP"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="AcademyApp.Uwp"
+        Description="AcademyApp.UWP"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
