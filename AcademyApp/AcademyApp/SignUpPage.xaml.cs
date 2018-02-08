@@ -88,7 +88,7 @@ namespace AcademyApp
             string json = "";
             json = JsonConvert.SerializeObject(objuser);
             HttpClient objClint = new HttpClient();
-            objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
+            objClint.BaseAddress = new Uri("http://172.19.133.97:9091/");
            
             //HttpResponseMessage respon = await objClint.PostAsync("api/UserManager/AddUser", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
             HttpResponseMessage respon = await objClint.PostAsync("api/Users/Register", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
@@ -136,12 +136,14 @@ namespace AcademyApp
 		}
 		public async void GetUserRole()
         {
-          
-          
-            HttpClient objClint = new HttpClient();
-            objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
 
-			System.Net.Http.HttpResponseMessage respon = await objClint.GetAsync("api/UserManager/OtherUserRole/");
+
+            HttpClient objClint = new HttpClient
+            {
+                BaseAddress = new Uri("http://172.19.133.97:9091/")
+            };
+
+            System.Net.Http.HttpResponseMessage respon = await objClint.GetAsync("api/UserManager/OtherUserRole/");
 			if (respon.IsSuccessStatusCode)
 			{
 				//ListView result1 = FindViewById<ListView>(Resource.Id.listView1);

@@ -34,7 +34,7 @@ namespace AcademyApp
             string json = "";
             json = JsonConvert.SerializeObject(user);
             HttpClient objClint = new HttpClient();
-            objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
+            objClint.BaseAddress = new Uri("http://172.19.133.97:9091/");
             var respon = await objClint.PostAsync("api/Users/authenticate", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
          
             if (respon.IsSuccessStatusCode)

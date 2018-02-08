@@ -26,7 +26,7 @@ namespace AcademyApp
         {
             HttpClient objClint = new HttpClient();
           
-            objClint.BaseAddress = new Uri("http://172.18.11.159:9091/");
+            objClint.BaseAddress = new Uri("http://172.19.133.97:9091/");
             string get_token = jwt();
             objClint.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", get_token);
             HttpResponseMessage respon = await objClint.GetAsync("api/Users/allusers");
