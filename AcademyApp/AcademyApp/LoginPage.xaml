@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand">
             <Label Text="Username" />
-            <Entry x:Name="usernameEntry" Placeholder="username" />
+            <Entry x:Name="usernameEntry"  />
             <Label Text="Password" />
             <Entry x:Name="passwordEntry" IsPassword="true" />
             <Button Text="Login" Clicked="OnLoginButtonClicked" />
@@ -16,7 +16,7 @@
             <Label Text="Remember me" />
             <local:CustomCheckBox x:Name="chkbox" ></local:CustomCheckBox>
 
-            <local:HyperlinkLabel x:Name="HyperLinkedFP" Uri="SignUpPage.xaml" Text="Forget Password"  HorizontalOptions="Center"      VerticalOptions="End"></local:HyperlinkLabel>
+            <local:HyperlinkLabel x:Name="HyperLinkedFP" Uri="index.html" Content="Forget Password"   HorizontalOptions="Center"      VerticalOptions="End">hjhjh</local:HyperlinkLabel>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

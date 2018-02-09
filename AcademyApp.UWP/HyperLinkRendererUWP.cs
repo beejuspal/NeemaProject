@@ -22,7 +22,9 @@ namespace AcademyApp.UWP
 			{
 				HyperlinkButton hlnkBtn = new HyperlinkButton();
 				SetNativeControl(hlnkBtn);
-				hlnkBtn.Content = "Forget Password";
+			
+			
+				//hlnkBtn.Content = "Forget Password";
 				//hlnkBtn.Click += HlnkBtn_Click;
 				
 

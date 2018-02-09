@@ -20,7 +20,7 @@ namespace AcademyApp
 			InitializeComponent();
 	
 			
-			HyperLinkedFP.GestureRecognizers.Add(new TapGestureRecognizer((view) => OnLabelClicked()));
+			//HyperLinkedFP.GestureRecognizers.Add(new TapGestureRecognizer((view) => OnLabelClicked()));
 			//chkbox.GestureRecognizers.Add(new TapGestureRecognizer((view) => OnChecked()));
 
 

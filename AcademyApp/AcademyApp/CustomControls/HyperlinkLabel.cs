@@ -24,16 +24,33 @@ namespace AcademyApp.CustomControls
 
 		
 		public static readonly BindableProperty textProperty = BindableProperty.Create(
-		  propertyName: "Text",
+		  propertyName: "Content",
 		  returnType: typeof(string),
 		  declaringType: typeof(HyperlinkLabel),
 		  defaultValue: default(string));
 
-		public string Text
+		public string Content
 		{
 			get { return (string)GetValue(textProperty); }
 			set { SetValue(textProperty, value); }
 		}
+		public void RegisterAction(Action<string> callback)
+		{
+			action = callback;
+		}
 
+		public void Cleanup()
+		{
+			action = null;
+		}
+
+		public void InvokeAction(string data)
+		{
+			if (action == null || data == null)
+			{
+				return;
+			}
+			action.Invoke(data);
+		}
 	}
 }
